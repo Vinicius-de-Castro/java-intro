@@ -1,5 +1,6 @@
 package finisu;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ public abstract class Input {
         Scanner scan = new Scanner(System.in);
         return scan.nextLine();
     }
-    public static void actions(Player player, Map<String, Evento> options){
+    public static void actions(Player player, HashMap<String, Evento> options){
         System.out.println("Opções:");
         System.out.println(options.keySet());
         String action = get();

@@ -1,15 +1,16 @@
 package finisu;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class Casa extends Lugar{
-     static Map<String, Evento> optionsMap = Map.ofEntries(
-            Map.entry("Beber água", Casa::beberAgua),
-            Map.entry("Comer", Casa::comer),
-            Map.entry("Tirar cochilo", Casa::tirarCochilo),
-            Map.entry("Dormir", Casa::dormir),
-            Map.entry("Voltar", Casa::voltar)
-    );
+     static HashMap<String, Evento> optionsMap = new HashMap<>();
+     static {
+         optionsMap.put("Beber água", Casa::beberAgua);
+         optionsMap.put("Comer", Casa::comer);
+         optionsMap.put("Tirar cochilo", Casa::tirarCochilo);
+         optionsMap.put("Dormir", Casa::dormir);
+         optionsMap.put("Voltar", Casa::voltar);
+     };
     public static void beberAgua(Player player){
         if (player.sede == 0) {
             System.out.println("Você não está com sede");
@@ -46,6 +47,11 @@ public class Casa extends Lugar{
             System.out.println("Você dorme que nem um bebê");
             player.energia = 10;
             player.dia++;
+            if (player.diasDeConstrucao > 0) player.diasDeConstrucao--;
+            if (player.diasDeConstrucao == 0){
+                Construcao.finalizar(player);
+                System.out.println("Tem novidades no mapa");
+            }
             System.out.println("----------------------------------------");
             System.out.println(STR."Hoje é dia \{player.dia}");
             System.out.println("O que você quer fazer hoje?");

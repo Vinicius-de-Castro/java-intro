@@ -1,20 +1,18 @@
 package finisu;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class Empresa extends Lugar{
-    static Map<String, Evento> optionsMap = Map.ofEntries(
-            Map.entry("Pedir emprego", Empresa::pedirEmprego),
-            Map.entry("Voltar", Empresa::voltar)
-    );
+    static HashMap<String, Evento> optionsMap = new HashMap<>();
+    static {
+        optionsMap.put("Pedir emprego", Empresa::pedirEmprego);
+        optionsMap.put("Voltar", Empresa::voltar);
+    }
     public static void pedirEmprego(Player player){
         if (player.inteligencia >= 20) {
             if (player.profissao.equals("Desempregado")){
                 System.out.println("Você foi aceito, agora você é engenheiro da Apple!");
-                player.profissao = "Engenheiro";
-                Empresa.optionsMap.remove("pedirEmprego");
-                Empresa.optionsMap.put("Desenvolver tecnologias", Empresa::desenvolver);
-                Empresa.optionsMap.put("Pedir demissão", Empresa::demissao);
+                empresaEntrar(player);
             }
             else System.out.println("Você já tem emprego, se quiser trabalhar aqui, pode pedir demissão onde trabalha");
         }
@@ -32,11 +30,23 @@ public class Empresa extends Lugar{
     }
     public static void demissao(Player player){
         System.out.println("Você quer viver novas experiências, então pede demissão");
-        player.profissao = "Desempregado";
-        Empresa.optionsMap.remove("Desenvolver tecnologias");
-        Empresa.optionsMap.put("Pedir emprego", Empresa::pedirEmprego);
+        empresaSair(player);
     }
     public static void voltar(Player player){
         System.out.println("Você sai da empresa");
+    }
+
+    //Funções de emprego
+    public static void empresaEntrar(Player player){
+        player.profissao = "Engenheiro";
+        optionsMap.remove("Pedir emprego");
+        optionsMap.put("Desenvolver tecnologias", Empresa::desenvolver);
+        optionsMap.put("Pedir demissão", Empresa::demissao);
+    }
+    public static void empresaSair(Player player){
+        player.profissao = "Desempregado";
+        optionsMap.remove("Desenvolver tecnologias");
+        optionsMap.remove("Pedir demissão");
+        optionsMap.put("Pedir emprego", Empresa::pedirEmprego);
     }
 }

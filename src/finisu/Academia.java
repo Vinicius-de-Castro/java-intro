@@ -1,13 +1,14 @@
 package finisu;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class Academia extends Lugar{
-    static Map<String, Evento> optionsMap = Map.ofEntries(
-            Map.entry("Treinar", Academia::treinar),
-            Map.entry("Pedir emprego", Academia::pedirEmprego),
-            Map.entry("Voltar", Academia::voltar)
-    );
+    static HashMap<String, Evento> optionsMap = new HashMap<>();
+    static {
+            optionsMap.put("Treinar", Academia::treinar);
+            optionsMap.put("Pedir emprego", Academia::pedirEmprego);
+            optionsMap.put("Voltar", Academia::voltar);
+    }
     public static void treinar(Player player){
         if (player.getVivo()) {
             if (player.forca < player.forcaMax) {
@@ -26,11 +27,8 @@ public class Academia extends Lugar{
     public static void pedirEmprego(Player player){
         if (player.forca >= 20) {
             if (player.profissao.equals("Desempregado")){
-                System.out.println("Você foi aceito, agora você é o melhor instrutor da academia");
-                player.profissao = "Instrutor";
-                Empresa.optionsMap.remove("pedirEmprego");
-                Empresa.optionsMap.put("Desenvolver tecnologias", Academia::instruir);
-                Empresa.optionsMap.put("Pedir demissão", Academia::demissao);
+                System.out.println("Você foi aceito e agora é o melhor instrutor da academia!");
+                academiaEntrar(player);
             }
             else System.out.println("Você já tem emprego, se quiser trabalhar aqui, pode pedir demissão onde trabalha");
         }
@@ -48,11 +46,23 @@ public class Academia extends Lugar{
     }
     public static void demissao(Player player){
         System.out.println("Você quer viver novas experiências, então pede demissão");
-        player.profissao = "Desempregado";
-        Academia.optionsMap.remove("Instruir");
-        Academia.optionsMap.put("Pedir emprego", Academia::pedirEmprego);
+        academiaSair(player);
     }
     public static void voltar(Player player){
         System.out.println("Você sai da academia");
+    }
+
+    //Funções de emprego
+    public static void academiaEntrar(Player player){
+        player.profissao = "Instrutor";
+        optionsMap.remove("Pedir emprego");
+        optionsMap.put("Instruir", Academia::instruir);
+        optionsMap.put("Pedir demissão", Academia::demissao);
+    }
+    public static void academiaSair(Player player){
+        player.profissao = "Desempregado";
+        optionsMap.remove("Instruir");
+        optionsMap.remove("Pedir demissão");
+        optionsMap.put("Pedir emprego", Academia::pedirEmprego);
     }
 }

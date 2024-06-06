@@ -1,18 +1,19 @@
 package finisu;
 
-import java.util.Map;
+import java.util.HashMap;
 import static finisu.Input.*;
 
 public class Mapa extends Lugar{
-    static Map<String, Evento> opcoesMap = Map.ofEntries(
-            Map.entry("Casa", Mapa::casa),
-            Map.entry("Escola", Mapa::escola),
-            Map.entry("Academia", Mapa::academia),
-            Map.entry("Mercado", Mapa::mercado),
-            Map.entry("Construção", Mapa::construcao),
-            Map.entry("Empresa", Mapa::empresa),
-            Map.entry("Voltar", Mapa::voltar)
-    );
+    static HashMap<String, Evento> optionsMap = new HashMap<>();
+    static {
+        optionsMap.put("Casa", Mapa::casa);
+        optionsMap.put("Escola", Mapa::escola);
+        optionsMap.put("Academia", Mapa::academia);
+        optionsMap.put("Mercado", Mapa::mercado);
+        optionsMap.put("Construção", Mapa::construcao);
+        optionsMap.put("Empresa", Mapa::empresa);
+        optionsMap.put("Voltar", Mapa::voltar);
+    }
     public static void casa(Player player){
         System.out.println("O que fazer em casa?");
         actions(player, Casa.optionsMap);
@@ -26,10 +27,14 @@ public class Mapa extends Lugar{
         actions(player, Academia.optionsMap);
     }
     public static void mercado(Player player){
-        System.out.println("Ainda vou implementar o mercado");
+        System.out.println("O que fazer no mercado?");
+        System.out.println("Preços:");
+        System.out.println("Miojo (1 dinheiro), Pizza (10 dinheiros)");
+        actions(player, Mercado.optionsMap);
     }
     public static void construcao(Player player){
-        System.out.println("Ainda vou implementar a construção");
+        System.out.println("O que fazer na construção?");
+        actions(player, Construcao.optionsMap);
     }
     public static void empresa(Player player) {
         System.out.println("O que fazer na empresa?");
@@ -37,5 +42,10 @@ public class Mapa extends Lugar{
     }
     public static void voltar(Player player){
         System.out.println("Você fecha o mapa");
+    }
+
+    //Lugares desbloqueáveis
+    public static void templo(Player player){
+
     }
 }

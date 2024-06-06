@@ -1,20 +1,21 @@
 package finisu;
 
 
-import java.util.Map;
+import java.util.HashMap;
 
 import static finisu.Input.actions;
 
 public class Loop extends Lugar{
     static boolean jogando = true;
-    static Map<String, Evento> opcoesMap = Map.ofEntries(
-            Map.entry("Abrir mapa", Loop::abrirMapa),
-            Map.entry("Mostrar stats", Loop::mostrarStats),
-            Map.entry("Parar jogo", Loop::pararJogo)
-    );
+    static HashMap<String, Evento> opcoesMap = new HashMap<>();
+    static {
+        opcoesMap.put("Abrir mapa", Loop::abrirMapa);
+        opcoesMap.put("Mostrar stats", Loop::mostrarStats);
+        opcoesMap.put("Parar jogo", Loop::pararJogo);
+    };
     public static void abrirMapa(Player player){
         System.out.println("Onde você quer ir?");
-        actions(player, Mapa.opcoesMap);
+        actions(player, Mapa.optionsMap);
     }
     public static void mostrarStats(Player player){
         System.out.println("Stats do jogador:");

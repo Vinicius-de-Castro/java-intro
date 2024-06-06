@@ -1,14 +1,15 @@
 package finisu;
 
-import java.util.Map;
+import java.util.HashMap;
 
 public class Escola extends Lugar{
-    static Map<String, Evento> optionsMap = Map.ofEntries(
-            Map.entry("Estudar", Escola::estudar),
-            Map.entry("Beber água", Escola::beberAgua),
-            Map.entry("Comprar salgado", Escola::comprarSalgado),
-            Map.entry("Voltar", Escola::voltar)
-    );
+    static HashMap<String, Evento> optionsMap = new HashMap<>();
+    static {
+        optionsMap.put("Estudar", Escola::estudar);
+        optionsMap.put("Beber água", Escola::beberAgua);
+        optionsMap.put("Comprar salgado", Escola::comprarSalgado);
+        optionsMap.put("Voltar", Escola::voltar);
+    }
     public static void estudar(Player player){
         if (player.getVivo()) {
             if (player.inteligencia < player.inteligenciaMax) {
