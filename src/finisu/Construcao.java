@@ -17,12 +17,16 @@ public class Construcao extends Lugar{
     }
     public static void pedirTrabalho(Player player){
         if (player.diasDeConstrucao > 1){
-            System.out.println("Você ajuda na obra e é pago por isso");
-            System.out.println("+1 dinheiro, +1 fome, +1 sede, -1 energia");
-            player.dinheiro++;
-            player.fome++;
-            player.sede++;
-            player.energia--;
+            if (player.getVivo()) {
+                System.out.println("Você ajuda na obra e é pago por isso");
+                System.out.println("+1 dinheiro, +2 fome, +2 sede, -2 energia");
+                player.dinheiro++;
+                player.fome += 2;
+                player.sede += 2;
+                player.energia -= 2;
+                player.diasDeConstrucao--;
+            }
+            else System.out.println("Não dá pra trabalhar nessas condições, vá se cuidar!");
         }
         else System.out.println("A obra já está quase pronta, não precisa mais ajudar");
     }

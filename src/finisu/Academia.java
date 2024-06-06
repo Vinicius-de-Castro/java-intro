@@ -21,7 +21,7 @@ public class Academia extends Lugar{
             }
             else System.out.println("Você já zerou toda a academia!");
         }
-        else System.out.println("Não dá pra treinar nessas condições, vá se cuidar!");
+        else System.out.println("Não dá pra trabalhar nessas condições, vá se cuidar!");
     }
 
     public static void pedirEmprego(Player player){
@@ -37,12 +37,15 @@ public class Academia extends Lugar{
         }
     }
     public static void instruir(Player player){
-        System.out.println("Você treina a elite da academia");
-        System.out.println("+5 dinheiro, +1 fome, +1 sede, -1 energia");
-        player.dinheiro += 5;
-        player.fome++;
-        player.sede++;
-        player.energia--;
+        if (player.getVivo()) {
+            System.out.println("Você treina a elite da academia");
+            System.out.println("+5 dinheiro, +1 fome, +1 sede, -1 energia");
+            player.dinheiro += 5;
+            player.fome++;
+            player.sede++;
+            player.energia--;
+        }
+        else System.out.println("Não dá pra treinar nessas condições, vá se cuidar!");
     }
     public static void demissao(Player player){
         System.out.println("Você quer viver novas experiências, então pede demissão");

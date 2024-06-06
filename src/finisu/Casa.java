@@ -33,7 +33,7 @@ public class Casa extends Lugar{
         }
     }
     public static void tirarCochilo(Player player){
-        if (player.energia == 10) {
+        if (player.energia == player.energiaMax) {
             System.out.println("Você não está com sono");
         }
         else {
@@ -42,10 +42,10 @@ public class Casa extends Lugar{
         }
     }
     public static void dormir(Player player){
-        if (player.energia == 10) System.out.println("Você não está com sono");
+        if (player.energia == player.energiaMax) System.out.println("Você não está com sono");
         else {
             System.out.println("Você dorme que nem um bebê");
-            player.energia = 10;
+            player.energia = player.energiaMax;
             player.dia++;
             if (player.diasDeConstrucao > 0) player.diasDeConstrucao--;
             if (player.diasDeConstrucao == 0){
