@@ -13,14 +13,6 @@ java {
     }
 }
 
-tasks.withType<JavaCompile>().configureEach {
-    options.compilerArgs.add("--enable-preview")
-}
-
-tasks.withType<JavaExec>().configureEach {
-    jvmArgs("--enable-preview")
-}
-
 application {
     // Define the main class for the application.
     mainClass = "finisu.Main"

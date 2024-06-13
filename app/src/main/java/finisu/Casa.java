@@ -2,61 +2,64 @@ package finisu;
 
 import java.util.HashMap;
 
-public class Casa extends Lugar{
-     static HashMap<String, Evento> optionsMap = new HashMap<>();
-     static {
-         optionsMap.put("Beber água", Casa::beberAgua);
-         optionsMap.put("Comer", Casa::comer);
-         optionsMap.put("Tirar cochilo", Casa::tirarCochilo);
-         optionsMap.put("Dormir", Casa::dormir);
-         optionsMap.put("Voltar", Casa::voltar);
-     };
-    public static void beberAgua(Player player){
+public class Casa extends Lugar {
+    static HashMap<String, Evento> optionsMap = new HashMap<>();
+    static {
+        optionsMap.put("Beber água", Casa::beberAgua);
+        optionsMap.put("Comer", Casa::comer);
+        optionsMap.put("Tirar cochilo", Casa::tirarCochilo);
+        optionsMap.put("Dormir", Casa::dormir);
+        optionsMap.put("Voltar", Casa::voltar);
+    };
+
+    public static void beberAgua(Player player) {
         if (player.sede == 0) {
             System.out.println("Você não está com sede");
-        }
-        else {
+        } else {
             System.out.println("Você se enche d'água");
             player.sede = 0;
         }
     }
-    public static void comer(Player player){
+
+    public static void comer(Player player) {
         if (player.comida == 0) {
             System.out.println("Você não tem comida em casa :/");
-        }
-        else if (player.fome == 0){
+        } else if (player.fome == 0) {
             System.out.println("Você não está com fome");
-        }
-        else {
+        } else {
             player.comida--;
             player.fome--;
         }
     }
-    public static void tirarCochilo(Player player){
+
+    public static void tirarCochilo(Player player) {
         if (player.energia == player.energiaMax) {
             System.out.println("Você não está com sono");
-        }
-        else {
+        } else {
             System.out.println("Você dá uma bela cochilada");
             player.energia++;
         }
     }
-    public static void dormir(Player player){
-        if (player.energia == player.energiaMax) System.out.println("Você não está com sono");
+
+    public static void dormir(Player player) {
+        if (player.energia == player.energiaMax)
+            System.out.println("Você não está com sono");
         else {
             System.out.println("Você dorme que nem um bebê");
             player.energia = player.energiaMax;
             player.dia++;
-            if (player.diasDeConstrucao > 0) player.diasDeConstrucao--;
-            if (player.diasDeConstrucao == 0){
+            if (player.diasDeConstrucao > 0)
+                player.diasDeConstrucao--;
+            if (player.diasDeConstrucao == 0) {
                 Construcao.finalizar(player);
                 System.out.println("Tem novidades no mapa");
             }
             System.out.println("----------------------------------------");
-            System.out.println(STR."Hoje é dia \{player.dia}");
+            System.out.printf("Hoje é dia %d\n", player.dia);
             System.out.println("O que você quer fazer hoje?");
         }
     }
+
     public static void voltar(Player player) {
         System.out.println("Você sai de casa");
     }

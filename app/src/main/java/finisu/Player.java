@@ -2,10 +2,11 @@ package finisu;
 
 public class Player {
 
-    public Player(String nome){
+    public Player(String nome) {
         this.nome = nome;
     }
-    //Stats
+
+    // Stats
     String nome, profissao = "Desempregado";
     int dinheiro = 0, dia = 1, comida = 20;
     int energia = 10, energiaMax = 10;
@@ -14,11 +15,13 @@ public class Player {
     int forca = 0, forcaMax = 20;
     int inteligencia = 0, inteligenciaMax = 20;
     boolean vivo = true;
-    public boolean getVivo(){
+
+    public boolean getVivo() {
         vivo = !((energia == 0) || (fome == fomeMax) || (sede == sedeMax));
         return vivo;
     }
-    //Lore
+
+    // Lore
     int diasDeConstrucao = 50;
     boolean temploPronto = false;
     boolean conseguiuEmprego = false;
