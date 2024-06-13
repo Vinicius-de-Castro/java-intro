@@ -1,6 +1,5 @@
 package finisu;
 
-import finisu.interfaces.Lugar;
 import finisu.interfaces.Evento;
 import java.util.HashMap;
 import finisu.places.Casa;
@@ -11,7 +10,7 @@ import finisu.places.Empresa;
 import finisu.places.Mercado;
 import static finisu.Input.actions;
 
-public class Mapa extends Lugar {
+public class Mapa {
     public static HashMap<String, Evento> optionsMap = new HashMap<>();
     static {
         optionsMap.put("Casa", Mapa::casa);

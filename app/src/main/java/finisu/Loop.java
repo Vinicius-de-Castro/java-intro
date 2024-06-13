@@ -1,12 +1,11 @@
 package finisu;
 
-import finisu.interfaces.Lugar;
 import finisu.interfaces.Evento;
 import java.util.HashMap;
 
 import static finisu.Input.actions;
 
-public class Loop extends Lugar {
+public class Loop {
     static boolean jogando = true;
     static HashMap<String, Evento> opcoesMap = new HashMap<>();
     static {

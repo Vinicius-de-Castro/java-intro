@@ -2,11 +2,10 @@ package finisu.places;
 
 import finisu.Player;
 import finisu.Mapa;
-import finisu.interfaces.Lugar;
 import finisu.interfaces.Evento;
 import java.util.HashMap;
 
-public class Construcao extends Lugar {
+public class Construcao {
     public static HashMap<String, Evento> optionsMap = new HashMap<>();
     static {
         optionsMap.put("Perguntar sobre", Construcao::perguntarSobre);

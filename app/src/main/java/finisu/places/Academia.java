@@ -2,10 +2,9 @@ package finisu.places;
 
 import finisu.Player;
 import java.util.HashMap;
-import finisu.interfaces.Lugar;
 import finisu.interfaces.Evento;
 
-public class Academia extends Lugar {
+public class Academia {
     public static HashMap<String, Evento> optionsMap = new HashMap<>();
     static {
         optionsMap.put("Treinar", Academia::treinar);

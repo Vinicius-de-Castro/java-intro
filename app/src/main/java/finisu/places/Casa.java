@@ -1,11 +1,10 @@
 package finisu.places;
 
 import finisu.Player;
-import finisu.interfaces.Lugar;
 import finisu.interfaces.Evento;
 import java.util.HashMap;
 
-public class Casa extends Lugar {
+public class Casa {
     public static HashMap<String, Evento> optionsMap = new HashMap<>();
     static {
         optionsMap.put("Beber água", Casa::beberAgua);
