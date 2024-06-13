@@ -1,12 +1,16 @@
 package finisu;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
 public class GUI {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         ImageIcon image = new ImageIcon("resources\\garf.png");
         JLabel label = new JLabel();
