@@ -1,5 +1,7 @@
 package finisu;
 
+import finisu.interfaces.Lugar;
+import finisu.interfaces.Evento;
 import java.util.HashMap;
 
 import static finisu.Input.actions;

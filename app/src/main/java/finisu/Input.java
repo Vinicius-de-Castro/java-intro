@@ -1,9 +1,10 @@
 package finisu;
 
+import finisu.interfaces.Evento;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public abstract class Input {
+public class Input {
     public static String get() {
         Scanner scan = new Scanner(System.in);
         return scan.nextLine();

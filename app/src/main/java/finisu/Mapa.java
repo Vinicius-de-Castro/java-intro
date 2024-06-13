@@ -1,10 +1,18 @@
 package finisu;
 
+import finisu.interfaces.Lugar;
+import finisu.interfaces.Evento;
 import java.util.HashMap;
-import static finisu.Input.*;
+import finisu.places.Casa;
+import finisu.places.Construcao;
+import finisu.places.Academia;
+import finisu.places.Escola;
+import finisu.places.Empresa;
+import finisu.places.Mercado;
+import static finisu.Input.actions;
 
 public class Mapa extends Lugar {
-    static HashMap<String, Evento> optionsMap = new HashMap<>();
+    public static HashMap<String, Evento> optionsMap = new HashMap<>();
     static {
         optionsMap.put("Casa", Mapa::casa);
         optionsMap.put("Escola", Mapa::escola);

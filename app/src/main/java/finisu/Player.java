@@ -7,14 +7,14 @@ public class Player {
     }
 
     // Stats
-    String nome, profissao = "Desempregado";
-    int dinheiro = 0, dia = 1, comida = 20;
-    int energia = 10, energiaMax = 10;
-    int fome = 0, fomeMax = 10;
-    int sede = 0, sedeMax = 10;
-    int forca = 0, forcaMax = 20;
-    int inteligencia = 0, inteligenciaMax = 20;
-    boolean vivo = true;
+    public String nome, profissao = "Desempregado";
+    public int dinheiro = 0, dia = 1, comida = 20;
+    public int energia = 10, energiaMax = 10;
+    public int fome = 0, fomeMax = 10;
+    public int sede = 0, sedeMax = 10;
+    public int forca = 0, forcaMax = 20;
+    public int inteligencia = 0, inteligenciaMax = 20;
+    public boolean vivo = true;
 
     public boolean getVivo() {
         vivo = !((energia == 0) || (fome == fomeMax) || (sede == sedeMax));
@@ -22,8 +22,8 @@ public class Player {
     }
 
     // Lore
-    int diasDeConstrucao = 50;
-    boolean temploPronto = false;
-    boolean conseguiuEmprego = false;
-    boolean foiAtacado = false;
+    public int diasDeConstrucao = 50;
+    public boolean temploPronto = false;
+    public boolean conseguiuEmprego = false;
+    public boolean foiAtacado = false;
 }
