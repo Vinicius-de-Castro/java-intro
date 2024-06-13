@@ -5,8 +5,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Input {
+    public static Scanner scan = new Scanner(System.in);
+
     public static String get() {
-        Scanner scan = new Scanner(System.in);
         return scan.nextLine();
     }
 

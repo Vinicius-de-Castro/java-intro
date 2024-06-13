@@ -37,5 +37,6 @@ public class Loop extends Lugar {
     public static void pararJogo(Player player) {
         System.out.printf("Obrigado por jogar, %s!\n", player.nome);
         jogando = false;
+        Input.scan.close();
     }
 }
